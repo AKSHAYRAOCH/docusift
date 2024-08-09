@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Upload, StickyNote, Settings,ChartColumnStacked, PanelRightOpen } from 'lucide-react';
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +18,56 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div className="flex h-screen">
+        
+          <div className="bg-blue-600 w-1/6 flex flex-col p-4">
+          <div className="flex justify-between mb-5">
+            <div>
+            <h1 className="font-extrabold text-black text-3xl">DocuSift</h1>
+
+            </div>
+            <div><PanelRightOpen size={30}/></div>
+            
+            </div>
+            <div className="mt-4 flex items-center space-x-2">
+              <Upload color="white" />
+              <span className="text-white ">
+                <Link href="/upload">Uploads</Link>
+              </span>
+            </div>
+            <div className="mt-4 flex items-center space-x-2">
+              <StickyNote color="white" />
+              <span  className="text-white ">
+              <Link href="/summaries">Summaries</Link>
+              </span>
+            </div>
+            <div className="mt-4 flex items-center space-x-2">
+              <ChartColumnStacked color="white" />
+              <span className="text-white ">
+              <Link href="/compare">Compare</Link>
+              </span>
+            </div>
+            <div className="mt-4 flex items-center space-x-2">
+              <Settings color="white" />
+              <span className="text-white ">
+              <Link href="/settings">Settings</Link>
+              </span>
+            </div>
+            
+          </div>
+
+        
+          <div className="flex flex-col w-5/6">
+            <div className="bg-white-400 w-full h-16 flex items-center justify-between px-4">
+              <h2 className="text-red font-bold">Header</h2>
+            </div>
+            <div className="flex-grow bg-gray-100 p-4">
+              {children}
+            </div>
+          </div>
+        </div>
+      </body>
     </html>
   );
 }

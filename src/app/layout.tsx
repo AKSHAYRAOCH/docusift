@@ -62,7 +62,7 @@ export default function RootLayout({
             <div className="bg-white-400 w-full h-16 flex items-center justify-between px-4">
               <h2 className="text-red font-bold">Header</h2>
             </div>
-            <div className="flex-grow bg-gray-100 p-4">
+            <div className="grow bg-gray-100 p-4">
               {children}
             </div>
           </div>

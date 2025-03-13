@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import {
-	Upload,
-	StickyNote,
-	Settings,
-	ChartColumnStacked,
-	PanelRightOpen,
-} from "lucide-react";
-import Link from "next/link";
-import { SideBar } from "@/components/side-bar";
+
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/app-sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,14 +20,13 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<div className="flex h-screen w-screen bg-gray-50 ">
-					<div className="w-1/5">
-						<SideBar />
-					</div>
-					
-
-					<div>{children}</div>
-				</div>
+				<SidebarProvider>
+					<AppSidebar />
+					<main>
+						<SidebarTrigger />
+						{children}
+					</main>
+				</SidebarProvider>
 			</body>
 		</html>
 	);
